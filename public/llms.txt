@@ -1,0 +1,30 @@
+# Bulltrain
+
+> El gimnasio de Laureles (Medellín, Antioquia, Colombia). Especialistas en glúteo y pierna, con máquinas modernas, coaches certificados, sala de cycling, crioterapia y 12 años construyendo cuerpo y mente. La Casa del Toro.
+
+Bulltrain está en la Cra 79 #37-53, Laureles, Medellín. Se entrena sin matrícula de inscripción ni cláusula de permanencia. Contacto por WhatsApp al +57 301 268 7229. Instagram: @bulltrain. Calificación 4.8★ en Google.
+
+## Disciplinas
+
+- Glúteo y pierna: nuestra especialidad, con máquinas pensadas para el tren inferior.
+- Cycling: sala de cycling con neón y energía de grupo, junto a @goodcycle.club.
+- Peso libre y fuerza: máquinas modernas y zona de peso libre, sin filas ni esperas.
+- Crioterapia (#LaTerraza): recuperación con baño de hielo en la terraza.
+
+## Planes
+
+- Día de prueba gratis: conoce el gym y entrena un día sin compromiso.
+- Mensualidad: acceso completo con rutina personalizada, sin matrícula ni permanencia.
+- Personalizado 1 a 1: acompañamiento total de un coach, con nutrición deportiva.
+
+## Secciones
+
+- [Disciplinas](https://bulltrain-demo.vercel.app/#disciplinas): glúteo y pierna, cycling, peso libre, crioterapia.
+- [La Casa del Toro](https://bulltrain-demo.vercel.app/#el-gym): 12 años y una comunidad de 20K en Laureles.
+- [Planes](https://bulltrain-demo.vercel.app/#planes): día de prueba, mensualidad y personalizado.
+- [Ubicación](https://bulltrain-demo.vercel.app/#ubicacion): dirección, mapa y horario.
+
+## Contacto
+
+- [WhatsApp](https://wa.me/573012687229): planes, horarios y tu día de prueba gratis.
+- [Instagram](https://instagram.com/bulltrain): fotos, rutinas y comunidad.

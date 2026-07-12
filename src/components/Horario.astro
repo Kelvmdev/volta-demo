@@ -1,0 +1,42 @@
+---
+// Parrilla de horario de clases (injertada de Steel Color, re-vestida a VOLTA).
+// Horario de referencia editable en site.json → horario.
+import site from '../data/site.json';
+const head = site.horarioHead;
+const { nota, dias } = site.horario;
+
+const colorPorDisciplina: Record<string, string> = {
+  Funcional: 'bg-ambar',
+  Cycling: 'bg-descarga',
+  HIIT: 'bg-crema',
+};
+---
+<section id="horario" class="bg-negro py-20 md:py-28">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <p class="mb-3 text-[0.78rem] font-bold uppercase tracking-[.24em] text-ambar">{head.eyebrow}</p>
+      <h2 class="font-display text-[clamp(2rem,4.5vw,3.4rem)] font-semibold uppercase leading-[1.02]" set:html={head.h2}></h2>
+    </div>
+
+    <div class="reveal mt-10 grid gap-5 md:grid-cols-2">
+      {dias.map((dia) => (
+        <div class="rounded-2xl border border-white/10 bg-negro2 p-6">
+          <h3 class="font-display text-[1.3rem] font-semibold uppercase tracking-wide text-crema">{dia.d}</h3>
+          <ul class="mt-4 space-y-2.5">
+            {dia.clases.map((c) => (
+              <li class="flex items-center justify-between gap-3 border-b border-white/5 pb-2.5 text-[.95rem]">
+                <span class="flex items-center gap-2.5">
+                  <span class:list={['h-2.5 w-2.5 shrink-0 rounded-full', colorPorDisciplina[c.disciplina] ?? 'bg-tenue']} aria-hidden="true"></span>
+                  <b class="font-semibold text-crema/90">{c.disciplina}</b>
+                </span>
+                <span class="whitespace-nowrap font-bold text-tenue">{c.hora}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <p class="reveal mx-auto mt-8 max-w-xl text-center text-sm text-tenue">{nota}</p>
+  </div>
+</section>

@@ -1,0 +1,17 @@
+---
+// Cinta de stats — números grandes en banda oscura con acento dorado.
+import site from '../data/site.json';
+const stats = site.statsBand;
+---
+<section aria-label="Cifras de VOLTA" class="bg-negro2">
+  <div class="v-divider v-line"></div>
+  <div class="mx-auto flex max-w-[1100px] flex-wrap items-center justify-center gap-x-20 gap-y-8 px-6 py-12 md:justify-between md:py-16">
+    {stats.map(([n, l]) => (
+      <div class="reveal text-center md:text-left">
+        <div class="font-display text-[clamp(2.6rem,6vw,3.8rem)] font-bold leading-none text-crema">{n}</div>
+        <div class="mt-2 max-w-[18ch] text-[0.8rem] font-semibold uppercase tracking-[.14em] text-tenue">{l}</div>
+      </div>
+    ))}
+  </div>
+  <div class="v-divider v-line"></div>
+</section>

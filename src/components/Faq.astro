@@ -1,0 +1,38 @@
+---
+// FAQ con <details> nativo (accesible, sin JS) + schema FAQPage para GEO/IA.
+// 2 columnas y compacto: las 6 preguntas caben en una pantalla.
+import site from '../data/site.json';
+const head = site.faqHead;
+const faq = site.faq;
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+<section id="faq" class="bg-negro py-14 md:py-16">
+  <div class="mx-auto max-w-[1100px] px-6">
+    <div class="reveal mb-8 flex flex-col items-center gap-2 text-center">
+      <p class="text-[0.78rem] font-bold uppercase tracking-[.24em] text-tenue">{head.eyebrow}</p>
+      <h2 class="font-display text-[clamp(1.7rem,3.6vw,2.6rem)] font-semibold uppercase leading-none" set:html={head.h2}></h2>
+    </div>
+
+    <div class="reveal grid gap-x-5 gap-y-3 md:grid-cols-2">
+      {faq.map((f) => (
+        <details class="group rounded-xl border border-white/10 bg-negro2 px-5 transition open:border-ambar/50 open:bg-negro2/80">
+          <summary class="flex cursor-pointer list-none items-center justify-between gap-3 py-3.5 font-slab text-[0.98rem] font-semibold uppercase tracking-wide text-crema marker:content-none [&::-webkit-details-marker]:hidden">
+            {f.q}
+            <span aria-hidden="true" class="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-ambar/15 text-ambar transition-transform group-open:rotate-45">+</span>
+          </summary>
+          <p class="pb-4 text-[0.9rem] leading-relaxed text-crema/75">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />

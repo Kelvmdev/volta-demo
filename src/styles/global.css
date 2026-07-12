@@ -1,0 +1,112 @@
+@import "tailwindcss";
+@import "./fonts.css";
+
+/* Tokens de marca VOLTA (gym "atleta editorial" — near-black azul-acero + acento eléctrico cian).
+   Se conservan los NOMBRES de la plantilla (negro, ambar, crema…); solo cambian los VALORES,
+   así el sitio entero cambia de piel de una. "ambar" = ACENTO = cian eléctrico "Carga" de VOLTA. */
+@theme {
+  --color-negro: #0a0c10;        /* Voltaje — fondo near-black azul-acero (NO negro puro) */
+  --color-negro2: #151922;       /* Grafito — superficies / secciones alternas */
+  --color-ambar: #26e6f0;        /* Carga — acento eléctrico cian (el "voltaje") */
+  --color-ambar2: #5cf0fa;       /* cian brillante (hover / glow) */
+  --color-descarga: #7a5cff;     /* Descarga — violeta eléctrico (SOLO en el gradiente de la firma) */
+  --color-crema: #f3f5f9;        /* Hueso — texto claro (off-white, no blanco puro) */
+  --color-tenue: #8b95a7;        /* Concreto — texto secundario */
+  --color-rojo: #26e6f0;         /* (alias acento) */
+  --color-verde: #26e6f0;        /* (alias acento) */
+  --color-amarillo: #5cf0fa;     /* (alias acento brillante) */
+  --color-negro-hondo: #04060a;  /* texto OSCURO sobre botones cian */
+  --color-borde: #6b7688;        /* borde de botones secundarios (AA 3:1 sobre el fondo) */
+
+  --font-display: "Archivo", sans-serif;   /* titulares pesados 900 (editorial atlético) */
+  --font-slab: "Archivo", sans-serif;       /* labels / eyebrows / botones (mayúsculas + tracking) */
+  --font-body: "Archivo", sans-serif;       /* cuerpo */
+}
+
+:root { color-scheme: dark; }
+
+/* ===== FIRMA VOLTA — "línea de voltaje" (gradiente cian→violeta que fluye) =====
+   Sello de marca recurrente: reemplaza los eyebrows genéricos con rayita. */
+/* gradiente de voltaje base (ESTÁTICO — no repinta). Lo usan tick y subrayado. */
+.v-line {
+  background: linear-gradient(90deg, transparent 0%, var(--color-ambar) 22%, var(--color-descarga) 50%, var(--color-ambar) 78%, transparent 100%);
+  background-size: 100% 100%;
+}
+@keyframes voltaje { to { background-position: -200% 0; } }
+
+/* divisor de sección a todo el ancho — el ÚNICO que fluye (pocos en pantalla a la vez) */
+.v-divider {
+  height: 2px; width: 100%;
+  background-size: 200% 100%;
+  animation: voltaje 6s linear infinite;
+  box-shadow: 0 0 18px -3px color-mix(in srgb, var(--color-ambar) 60%, transparent);
+}
+/* tick corto antes de un label (gradiente estático) */
+.v-tick { display: inline-block; height: 2px; width: 2.6rem; border-radius: 2px; vertical-align: middle; }
+/* subrayado de voltaje bajo una palabra del titular (gradiente estático) */
+.v-under { position: relative; white-space: nowrap; }
+.v-under::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -.04em; height: .1em; border-radius: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-ambar) 20%, var(--color-descarga) 55%, var(--color-ambar) 85%, transparent);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-body); }
+
+/* el header fijo no debe tapar las secciones al saltar por ancla */
+section[id], header[id] { scroll-margin-top: 6rem; }
+
+/* header sólido al hacer scroll (clase togglea por JS) */
+#site-header.scrolled nav {
+  background: rgba(10, 12, 16, .92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 28px -14px rgba(0, 0, 0, .9);
+}
+
+/* foco visible de marca */
+:focus-visible { outline: 2px solid var(--color-ambar); outline-offset: 3px; border-radius: 2px; }
+
+/* animación de entrada del hero (al cargar) */
+@keyframes rise { to { opacity: 1; transform: none; } }
+.rise { opacity: 0; transform: translateY(22px); animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+
+/* delays escalonados de las entradas del hero */
+.d1 { animation-delay: .15s; }
+.d2 { animation-delay: .32s; }
+.d3 { animation-delay: .5s; }
+.d4 { animation-delay: .66s; }
+.d5 { animation-delay: .82s; }
+
+/* Hero: fondo con zoom lento + degradados para legibilidad (glow cian en vez de dorado) */
+.hero-bg {
+  background: url('/img/hero.webp') center 40% / cover no-repeat;
+  animation: zoom 18s ease-out forwards;
+}
+@keyframes zoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+.hero-shade {
+  background:
+    linear-gradient(90deg, rgba(10,12,16,.96) 0%, rgba(10,12,16,.72) 42%, rgba(10,12,16,.32) 100%),
+    radial-gradient(115% 80% at 92% 6%, rgba(38,230,240,.24), transparent 52%),
+    linear-gradient(0deg, rgba(10,12,16,.98) 2%, rgba(10,12,16,0) 46%);
+}
+@media (max-width: 820px) {
+  .hero-shade {
+    background:
+      linear-gradient(0deg, rgba(10,12,16,.98) 8%, rgba(10,12,16,.4) 60%, rgba(10,12,16,.64) 100%),
+      radial-gradient(120% 60% at 85% 5%, rgba(38,230,240,.22), transparent 55%);
+  }
+}
+
+/* reveal al hacer scroll (secciones internas) */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .rise, .reveal { opacity: 1; transform: none; }
+}

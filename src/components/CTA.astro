@@ -1,0 +1,21 @@
+---
+import site from '../data/site.json';
+const wa = site.contacto.whatsappUrl;
+const c = site.cta;
+---
+<section class="relative overflow-hidden bg-negro py-20 md:py-24">
+  <div class="v-divider v-line absolute inset-x-0 top-0"></div>
+  <div class="pointer-events-none absolute inset-0" style="background: radial-gradient(60% 80% at 50% 0%, rgba(38,230,240,.14), transparent 60%);"></div>
+  <div class="reveal relative mx-auto max-w-3xl px-6 text-center">
+    <h2 class="font-display text-[clamp(2rem,5vw,3.6rem)] font-bold uppercase leading-[1] tracking-tight text-crema">
+      {c.h2}
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-lg text-crema/75">
+      {c.parrafo}
+    </p>
+    <a href={wa} target="_blank" rel="noopener" class="mt-8 inline-flex items-center rounded-full bg-ambar px-8 py-4 text-lg font-bold uppercase tracking-[.03em] text-negro-hondo transition active:scale-95 hover:-translate-y-0.5 hover:bg-ambar2 hover:shadow-[0_16px_40px_-12px_rgba(38,230,240,.6)]">
+      {c.boton}
+    </a>
+  </div>
+  <div class="v-divider v-line absolute inset-x-0 bottom-0"></div>
+</section>

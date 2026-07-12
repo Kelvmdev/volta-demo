@@ -1,0 +1,37 @@
+---
+// Disciplinas — 4 tarjetas cuadradas uniformes (foto cuadrada = mínimo recorte) con el texto DEBAJO.
+import site from '../data/site.json';
+const head = site.disciplinasHead;
+const items = site.disciplinas;
+---
+<section id="disciplinas" class="bg-negro py-20 md:py-28">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div class="reveal max-w-3xl">
+      <p class="mb-4 flex items-center gap-3 text-[0.78rem] font-bold uppercase tracking-[.22em] text-tenue">
+        <span class="v-tick v-line"></span>{head.eyebrow}
+      </p>
+      <h2 class="font-display text-[clamp(2rem,4.5vw,3.4rem)] font-semibold uppercase leading-[1.02]" set:html={head.h2}></h2>
+    </div>
+
+    <div class="reveal mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
+      {items.map((d) => (
+        <article class="group overflow-hidden rounded-2xl border border-white/10 bg-negro2">
+          <div class="relative aspect-square overflow-hidden">
+            <img
+              src={d.img}
+              alt={d.alt}
+              loading="lazy"
+              width="1000" height="1000"
+              class="h-full w-full object-cover transition duration-700 group-hover:scale-105"
+            />
+            <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-negro2 to-transparent"></div>
+          </div>
+          <div class="p-5">
+            <h3 class="font-display text-[1.3rem] font-semibold uppercase leading-tight tracking-wide text-crema group-hover:text-ambar transition">{d.t}</h3>
+            <p class="mt-1.5 text-[0.9rem] leading-snug text-tenue">{d.s}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

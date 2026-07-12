@@ -1,0 +1,47 @@
+---
+import site from '../data/site.json';
+const wa = site.contacto.whatsappUrl;
+const ig = site.contacto.instagram;
+const links = site.nav;
+const { direccionL1, direccionL2, horarioCorto, whatsappDisplay } = site.contacto;
+const tagline = site.marca.tagline;
+const maker = site.maker;
+const year = new Date().getFullYear();
+---
+<footer class="border-t border-white/10 bg-negro2 py-14">
+  <div class="mx-auto grid max-w-[1240px] gap-10 px-6 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div>
+      <span class="font-display text-3xl font-black uppercase leading-none tracking-[.16em] text-crema">VOLT<span class="text-ambar">A</span></span>
+      <p class="mt-4 max-w-xs text-sm leading-relaxed text-tenue">
+        {tagline}
+      </p>
+      <div class="mt-5 flex gap-3">
+        <a href={ig} target="_blank" rel="noopener" class="rounded-lg border border-white/15 px-4 py-2 text-sm font-semibold text-crema/90 transition hover:border-ambar hover:text-ambar2">Instagram</a>
+        <a href={wa} target="_blank" rel="noopener" class="rounded-lg border border-white/15 px-4 py-2 text-sm font-semibold text-crema/90 transition hover:border-ambar hover:text-ambar2">WhatsApp</a>
+      </div>
+    </div>
+
+    <nav aria-label="Enlaces del pie">
+      <h3 class="mb-4 font-slab text-sm font-semibold uppercase tracking-widest text-ambar2">Menú</h3>
+      <ul class="space-y-2 text-sm">
+        {links.map((l) => (
+          <li><a href={l.href} class="text-crema/80 transition hover:text-ambar2">{l.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div>
+      <h3 class="mb-4 font-slab text-sm font-semibold uppercase tracking-widest text-ambar2">Contacto</h3>
+      <address class="space-y-2 text-sm not-italic text-crema/80">
+        <p>{direccionL1}<br />{direccionL2}</p>
+        <p>WhatsApp: <a href={wa} target="_blank" rel="noopener" class="hover:text-ambar2">{whatsappDisplay}</a></p>
+        <p>{horarioCorto}</p>
+      </address>
+    </div>
+  </div>
+
+  <div class="mx-auto mt-10 flex max-w-[1240px] flex-col items-center justify-between gap-2 border-t border-white/10 px-6 pt-6 text-xs text-tenue sm:flex-row">
+    <p>© {year} VOLTA · El Poblado, Medellín</p>
+    <p>Hecho por <a href={maker.url} target="_blank" rel="noopener" class="underline text-crema/70 hover:text-ambar2">{maker.name}</a></p>
+  </div>
+</footer>

@@ -1,0 +1,52 @@
+---
+// Planes / membresías — tiers. El destacado lleva marco dorado. Precios "consultar" hasta confirmar con el cliente.
+import site from '../data/site.json';
+const head = site.planesHead;
+const planes = site.planes;
+const wa = site.contacto.whatsappUrl;
+---
+<section id="planes" class="bg-negro2 py-20 md:py-28">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <p class="mb-3 text-[0.78rem] font-bold uppercase tracking-[.24em] text-ambar">{head.eyebrow}</p>
+      <h2 class="font-display text-[clamp(2rem,4.5vw,3.4rem)] font-semibold uppercase leading-[1.02]" set:html={head.h2}></h2>
+    </div>
+
+    <div class="reveal mt-12 grid gap-5 md:grid-cols-3">
+      {planes.map((p) => (
+        <div
+          class:list={[
+            'flex flex-col rounded-2xl border p-7 transition',
+            p.destacado
+              ? 'border-ambar/55 bg-negro'
+              : 'border-white/10 bg-negro hover:border-white/25',
+          ]}
+        >
+          <h3 class="font-display text-2xl font-semibold uppercase tracking-wide text-crema">{p.t}</h3>
+          <p class="mt-2 font-display text-[2.4rem] font-bold leading-none text-ambar">{p.precio}</p>
+          <p class="mt-3 text-[0.95rem] leading-relaxed text-crema/80">{p.detalle}</p>
+          <ul class="mt-6 flex-1 space-y-3 text-sm text-crema/85">
+            {p.features.map((f) => (
+              <li class="flex items-center gap-2.5">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="h-3.5 w-3.5 shrink-0 text-ambar" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>{f}
+              </li>
+            ))}
+          </ul>
+          <a
+            href={wa}
+            target="_blank"
+            rel="noopener"
+            class:list={[
+              'mt-7 inline-flex items-center justify-center rounded-full px-6 py-3.5 text-[0.95rem] font-bold uppercase tracking-[.03em] transition active:scale-95',
+              p.destacado
+                ? 'bg-ambar text-negro-hondo hover:bg-ambar2'
+                : 'border-[1.5px] border-borde text-crema hover:border-ambar hover:text-ambar',
+            ]}
+          >{p.precio === 'Gratis' ? 'Agéndalo' : 'Consultar'}</a>
+        </div>
+      ))}
+    </div>
+
+    <p class="reveal mx-auto mt-8 max-w-2xl text-center text-sm text-tenue">{head.nota}</p>
+  </div>
+</section>

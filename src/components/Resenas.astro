@@ -1,0 +1,24 @@
+---
+// Reseñas — testimonios reales citados de Google (4.8★).
+import site from '../data/site.json';
+const head = site.resenasHead;
+const items = site.resenas;
+---
+<section id="resenas" class="bg-negro py-20 md:py-28">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <h2 class="font-display text-[clamp(2rem,4.5vw,3.4rem)] font-semibold uppercase leading-[1.02]" set:html={head.h2}></h2>
+      <p class="mt-4 text-lg font-semibold uppercase tracking-wide text-ambar">★★★★★ 4.9 en Google</p>
+    </div>
+
+    <div class="reveal mt-10 grid gap-5 md:grid-cols-3">
+      {items.map((r) => (
+        <figure class="flex flex-col rounded-2xl border border-white/10 bg-negro2 p-6">
+          <div class="mb-3 text-ambar" aria-label={`${r.estrellas} de 5 estrellas`}>{'★'.repeat(r.estrellas)}</div>
+          <blockquote class="flex-1 text-[0.98rem] leading-relaxed text-crema/90">“{r.txt}”</blockquote>
+          <figcaption class="mt-4 font-slab text-sm font-semibold uppercase tracking-wide text-tenue">— {r.autor}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

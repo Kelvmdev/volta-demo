@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+import siteData from '../data/site.json';
+
+const {
+  title = 'VOLTA — Gimnasio boutique en El Poblado, Medellín',
+  description = 'VOLTA, el gimnasio boutique de El Poblado: máquinas de última generación, coaches certificados y energía de alto voltaje. Agenda tu clase de prueba gratis.',
+  jsonLd = true, // solo la home; el 404 lo apaga con jsonLd={false}
+  preloadHero = true, // precarga el LCP; el 404 (sin hero) lo apaga
+  noindex = false, // el 404 lo enciende
+} = Astro.props;
+
+const site = siteData.url; // fuente única del dominio (robots.txt/sitemap.xml son estáticos, ver public/)
+const ogImage = `${site}/og.jpg`;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, site).href} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <meta name="theme-color" content="#0a0c10" />
+    <meta name="generator" content={Astro.generator} />
+    {preloadHero && <link rel="preload" as="image" href="/img/hero.webp" fetchpriority="high" />}
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- Open Graph / redes -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="VOLTA" />
+    <meta property="og:url" content={site} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="VOLTA — gimnasio boutique en El Poblado, Medellín" />
+    <meta property="og:locale" content="es_CO" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD: gimnasio (SEO / GEO) -->
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': ['ExerciseGym', 'HealthClub', 'LocalBusiness'],
+      name: 'VOLTA',
+      description,
+      url: site,
+      image: ogImage,
+      telephone: `+${siteData.contacto.whatsapp}`,
+      priceRange: '$$',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: siteData.contacto.direccionL1,
+        addressLocality: 'Medellín',
+        addressRegion: 'Antioquia',
+        addressCountry: 'CO',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: siteData.contacto.lat,
+        longitude: siteData.contacto.lon,
+      },
+      openingHours: ['Mo-Fr 05:00-22:00', 'Sa 07:00-16:00', 'Su 08:00-13:00'],
+      sameAs: [siteData.contacto.instagram],
+    })} />}
+
+    <!-- Fuentes self-hosted (ver src/styles/fonts.css). Precarga Archivo = titular del hero (LCP). -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/archivo-var-latin.woff2" crossorigin />
+  </head>
+  <body class="bg-negro text-crema antialiased">
+    <a
+      href="#contenido"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-ambar focus:px-4 focus:py-2 focus:font-bold focus:text-white"
+      >Saltar al contenido</a
+    >
+    <slot />
+
+    <!-- botón flotante de WhatsApp (captura del lead en Presencia) -->
+    <a
+      href={siteData.contacto.whatsappUrl}
+      target="_blank"
+      rel="noopener"
+      aria-label="Escríbenos por WhatsApp"
+      class="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_10px_30px_-6px_rgba(0,0,0,.6)] transition hover:scale-105 active:scale-95"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-7 w-7 text-white"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.8-1.5A10 10 0 1 0 12 2Zm0 18.3a8.3 8.3 0 0 1-4.2-1.15l-.3-.18-3 .8.8-2.9-.2-.3A8.3 8.3 0 1 1 12 20.3Zm4.6-6.2c-.25-.13-1.5-.74-1.73-.82-.23-.09-.4-.13-.57.13-.17.25-.65.82-.8.98-.15.17-.3.19-.55.06a6.8 6.8 0 0 1-2-1.24 7.5 7.5 0 0 1-1.38-1.72c-.15-.25 0-.38.11-.5.11-.12.25-.3.37-.44.12-.15.16-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.57-1.37-.78-1.87-.2-.49-.41-.42-.57-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.87.85-.87 2.07 0 1.22.9 2.4 1.02 2.56.13.17 1.76 2.7 4.27 3.78.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.5-.61 1.7-1.2.22-.59.22-1.1.15-1.2-.06-.1-.23-.17-.48-.3Z"/></svg>
+    </a>
+
+    <script>
+      // revela .reveal al entrar en pantalla — en AMBAS direcciones (sube y baja)
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            e.target.classList.toggle('is-visible', e.isIntersecting);
+          }
+        },
+        { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

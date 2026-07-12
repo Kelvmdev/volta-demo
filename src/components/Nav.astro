@@ -1,0 +1,96 @@
+---
+import site from '../data/site.json';
+const links = site.nav;
+const wa = site.contacto.whatsappUrl;
+---
+
+<!-- header fijo: transparente sobre el hero, sólido al hacer scroll -->
+<header id="site-header" class="fixed inset-x-0 top-0 z-40 transition-colors duration-300">
+  <nav aria-label="Principal" class="bg-gradient-to-b from-negro/70 to-transparent">
+    <div class="mx-auto flex max-w-[1240px] items-center justify-between px-6 py-3.5">
+      <!-- wordmark VOLTA (la "A" cargada en cian) -->
+      <a href="/#inicio" class="font-display text-[1.65rem] font-black uppercase leading-none tracking-[.16em] text-crema [text-shadow:0_1px_10px_rgba(0,0,0,.7)] sm:text-[1.9rem]" aria-label="VOLTA — inicio">
+        VOLT<span class="text-ambar">A</span>
+      </a>
+
+      <!-- links escritorio -->
+      <ul class="hidden items-center gap-8 font-slab text-[1.02rem] font-medium uppercase tracking-[.05em] min-[900px]:flex">
+        {links.map((l) => (
+          <li>
+            <a href={l.href} class="text-crema/85 [text-shadow:0_1px_8px_rgba(0,0,0,.5)] transition hover:text-ambar">{l.label}</a>
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={wa}
+        target="_blank"
+        rel="noopener"
+        class="hidden items-center gap-2 rounded-full bg-ambar px-5 py-2.5 font-slab text-[0.95rem] font-bold uppercase tracking-[.03em] text-negro-hondo transition active:scale-95 hover:-translate-y-0.5 hover:bg-ambar2 hover:shadow-[0_10px_24px_-8px_rgba(38,230,240,.6)] min-[900px]:inline-flex"
+        >Clase gratis</a
+      >
+
+      <!-- hamburguesa móvil -->
+      <button
+        id="burger"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+        aria-controls="menu-movil"
+        class="flex h-11 w-11 flex-col items-center justify-center gap-1.5 min-[900px]:hidden"
+      >
+        <span class="block h-0.5 w-6 rounded bg-crema"></span>
+        <span class="block h-0.5 w-6 rounded bg-crema"></span>
+        <span class="block h-0.5 w-6 rounded bg-crema"></span>
+      </button>
+    </div>
+
+    <!-- menú móvil -->
+    <div
+      id="menu-movil"
+      class="hidden border-t border-white/10 bg-negro/95 px-6 py-4 backdrop-blur min-[900px]:hidden"
+    >
+      <ul class="flex flex-col gap-1 font-slab text-base font-semibold uppercase tracking-[.05em]">
+        {links.map((l) => (
+          <li><a href={l.href} class="block py-2 text-crema/90 hover:text-ambar">{l.label}</a></li>
+        ))}
+        <li>
+          <a href={wa} target="_blank" rel="noopener" class="mt-2 inline-flex items-center gap-2 rounded-full bg-ambar px-5 py-2.5 font-bold uppercase text-negro-hondo transition active:scale-95"
+            >Agenda tu clase gratis</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // header sólido al hacer scroll
+  const hdr = document.getElementById('site-header');
+  const onScroll = () => hdr?.classList.toggle('scrolled', window.scrollY > 30);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // menú móvil
+  const b = document.getElementById('burger');
+  const m = document.getElementById('menu-movil');
+  b?.addEventListener('click', () => {
+    const open = m?.classList.toggle('hidden') === false;
+    b.setAttribute('aria-expanded', String(open));
+    b.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+  });
+  const cerrar = (devolverFoco = false) => {
+    m?.classList.add('hidden');
+    b?.setAttribute('aria-expanded', 'false');
+    b?.setAttribute('aria-label', 'Abrir menú');
+    if (devolverFoco) b?.focus();
+  };
+  m?.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => cerrar()));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !m?.classList.contains('hidden')) cerrar(true);
+  });
+  document.addEventListener('click', (e) => {
+    if (m?.classList.contains('hidden')) return;
+    const t = e.target as Node;
+    if (!m.contains(t) && !b?.contains(t)) cerrar();
+  });
+</script>

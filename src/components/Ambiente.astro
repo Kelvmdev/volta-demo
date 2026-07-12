@@ -1,0 +1,55 @@
+---
+// Galería tipo mosaico con fotos del gym. Contenido en src/data/site.json.
+import site from '../data/site.json';
+const fotos = site.ambiente.galeria;
+const a = site.ambiente;
+---
+<section id="galeria" class="bg-negro py-20 md:py-28">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div class="reveal max-w-3xl">
+      <p class="mb-3 text-[0.78rem] font-bold uppercase tracking-[.22em] text-tenue">{a.eyebrow}</p>
+      <h2 class="font-display text-[clamp(2rem,4.5vw,3.4rem)] font-semibold uppercase leading-[1.02]" set:html={a.h2}></h2>
+    </div>
+
+    <div class="reveal mt-10 grid grid-cols-2 gap-3 md:grid-cols-4 md:auto-rows-[15.5rem]">
+      {fotos.map((f, i) => (
+        <button
+          type="button"
+          class:list={[
+            'lightbox-btn group relative overflow-hidden rounded-xl',
+            i === 0 ? 'col-span-2 row-span-2 aspect-square md:aspect-auto' : 'aspect-square md:aspect-auto',
+          ]}
+          data-src={f.src}
+          aria-label={`Ampliar foto: ${f.alt}`}
+        >
+          <img
+            src={f.src}
+            alt={f.alt}
+            loading="lazy"
+            class="h-full w-full object-cover transition duration-500 group-hover:brightness-110"
+          />
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <!-- lightbox: dialog nativo (Esc y clic-fuera cierran) -->
+  <dialog id="lightbox" class="m-auto max-h-[90vh] max-w-[92vw] bg-transparent backdrop:bg-black/80 backdrop:backdrop-blur-sm">
+    <img id="lightbox-img" src="" alt="" class="max-h-[90vh] max-w-[92vw] rounded-lg object-contain" />
+  </dialog>
+</section>
+
+<script>
+  const dlg = document.getElementById('lightbox') as HTMLDialogElement | null;
+  const img = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  document.querySelectorAll<HTMLButtonElement>('.lightbox-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const inner = btn.querySelector('img');
+      if (!dlg || !img || !inner) return;
+      img.src = btn.dataset.src ?? inner.src;
+      img.alt = inner.alt;
+      dlg.showModal();
+    });
+  });
+  dlg?.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+</script>

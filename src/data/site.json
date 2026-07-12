@@ -1,0 +1,152 @@
+{
+  "url": "https://volta-demo.vercel.app",
+  "contacto": {
+    "whatsapp": "573001112233",
+    "whatsappUrl": "https://wa.me/573001112233",
+    "whatsappDisplay": "300 111 2233",
+    "instagram": "https://instagram.com/volta.gym",
+    "direccionL1": "Cra 43A #18-95",
+    "direccionL2": "El Poblado, Medellín",
+    "direccionFull": "Cra 43A #18-95 — El Poblado, Medellín",
+    "horario": "Lun–Vie · 5:00 a.m. – 10:00 p.m. · Sáb · 7:00 a.m. – 4:00 p.m. · Dom · 8:00 a.m. – 1:00 p.m.",
+    "horarioCorto": "Lun–Vie 5 a.m.–10 p.m. · Sáb hasta 4 p.m. · Dom medio día",
+    "horarioDias": [
+      ["Lun – Vie", "5:00 a.m. – 10:00 p.m."],
+      ["Sábado", "7:00 a.m. – 4:00 p.m."],
+      ["Domingo", "8:00 a.m. – 1:00 p.m."],
+      ["Festivos", "8:00 a.m. – 1:00 p.m."]
+    ],
+    "mapQuery": "El Poblado, Medellín",
+    "lat": "6.2087090",
+    "lon": "-75.5710203"
+  },
+  "marca": {
+    "nombre": "VOLTA",
+    "tagline": "El gimnasio boutique donde entrenas a otro voltaje: máquinas de última generación, coaches certificados y una energía que se siente desde que entras.",
+    "comunidad": "3K"
+  },
+  "hero": {
+    "eyebrow": "Gimnasio boutique · Alto voltaje",
+    "titulo1": "Entrena",
+    "titulo2": "a otro",
+    "tituloAcento": "voltaje",
+    "parrafo": "Máquinas de última generación, coaches que corrigen tu técnica y una energía de grupo que te empuja. Sin filas, sin esperas — solo tú y tu mejor versión.",
+    "ctaPrimario": "Agenda tu clase gratis",
+    "ctaSecundario": "Ver planes",
+    "stats": [
+      ["★ 4.9", "en Google"],
+      ["3K+", "en la comunidad"],
+      ["24/7", "acceso a miembros"]
+    ]
+  },
+  "statsBand": [
+    ["12", "coaches certificados"],
+    ["+40", "clases cada semana"],
+    ["100%", "sin filas ni esperas"]
+  ],
+  "disciplinasHead": {
+    "eyebrow": "Lo que se entrena",
+    "h2": "Disciplinas de <span class=\"v-under\">alto voltaje</span>"
+  },
+  "disciplinas": [
+    { "t": "Musculación & fuerza", "s": "Zona de peso libre y máquinas de última generación. Sin filas, sin esperas.", "img": "/img/d-gluteo.webp", "alt": "Zona de musculación y peso libre en VOLTA" },
+    { "t": "Funcional & HIIT", "s": "Entrenamiento funcional de alta intensidad para quemar y ganar resistencia.", "img": "/img/d-fuerza.webp", "alt": "Entrenamiento funcional y HIIT en VOLTA" },
+    { "t": "Peso libre & mancuernas", "s": "Amplia zona de peso libre para que entrenes a tu ritmo, sin filas.", "img": "/img/d-cycling.webp", "alt": "Zona de peso libre y mancuernas en VOLTA" },
+    { "t": "Máquinas modernas", "s": "Equipos de última generación con biomecánica cuidada para cada grupo muscular.", "img": "/img/d-cryo.webp", "alt": "Máquinas modernas de entrenamiento en VOLTA" }
+  ],
+  "sobre": {
+    "eyebrow": "Quiénes somos",
+    "h2": "Un gimnasio que <span class=\"text-ambar\">se siente distinto</span>",
+    "parrafo": "VOLTA no es un gym más. Es un espacio boutique pensado para que entrenes concentrado y con energía: máquinas modernas donde nunca hay filas, coaches certificados que corrigen tu técnica de verdad, y una comunidad que empuja contigo. Entras a cargar pilas — y no paras hasta ser tu mejor versión.",
+    "img": "/img/sobre.webp",
+    "alt": "Interior del gimnasio VOLTA",
+    "features": [
+      ["⚡", "Máquinas de última generación"],
+      ["🏋️", "Zona de peso libre, sin filas"],
+      ["🎓", "Coaches certificados"],
+      ["🔥", "Comunidad que te empuja"]
+    ]
+  },
+  "planesHead": {
+    "eyebrow": "Planes",
+    "h2": "Elige cómo entrenar",
+    "nota": "Precios a confirmar directamente con el gym. Escríbenos y te armamos el plan a tu medida."
+  },
+  "planes": [
+    { "t": "Clase de prueba", "precio": "Gratis", "detalle": "Ven, conoce VOLTA y entrena una clase con nosotros.", "features": ["Acceso a máquinas", "Recorrido con un coach", "Sin compromiso"], "destacado": false },
+    { "t": "Mensualidad", "precio": "Consultar", "detalle": "Acceso completo al gym con rutina personalizada incluida.", "features": ["Acceso ilimitado", "Rutina personalizada", "Sin matrícula", "Sin permanencia"], "destacado": true },
+    { "t": "Personalizado 1 a 1", "precio": "Consultar", "detalle": "Acompañamiento total de un coach en cada sesión.", "features": ["Coach dedicado", "Plan a tu meta", "Seguimiento de progreso", "Nutrición deportiva"], "destacado": false }
+  ],
+  "horarioHead": {
+    "eyebrow": "Horario de clases",
+    "h2": "Programa tu semana"
+  },
+  "horario": {
+    "nota": "El horario real de clases se confirma con el gym por WhatsApp.",
+    "dias": [
+      { "d": "Lunes a viernes", "clases": [
+        { "disciplina": "Funcional", "hora": "6:00 a.m." },
+        { "disciplina": "Cycling", "hora": "7:00 a.m." },
+        { "disciplina": "HIIT", "hora": "12:00 m." },
+        { "disciplina": "Funcional", "hora": "6:00 p.m." },
+        { "disciplina": "Cycling", "hora": "7:00 p.m." }
+      ] },
+      { "d": "Sábado", "clases": [
+        { "disciplina": "Funcional", "hora": "8:00 a.m." },
+        { "disciplina": "HIIT", "hora": "9:00 a.m." },
+        { "disciplina": "Cycling", "hora": "10:00 a.m." }
+      ] }
+    ]
+  },
+  "resenasHead": {
+    "eyebrow": "La comunidad habla",
+    "h2": "Lo que dicen <span class=\"text-ambar\">en Google</span>"
+  },
+  "resenas": [
+    { "txt": "Excelente espacio para entrenar. El ambiente es increíble, nunca hay filas y los entrenadores siempre están pendientes.", "autor": "Miembro VOLTA", "estrellas": 5 },
+    { "txt": "Me ayudó a ganar masa muscular y las clases mejoraron mi resistencia. Muy recomendado.", "autor": "Miembro VOLTA", "estrellas": 5 },
+    { "txt": "El mejor gym de la zona. Máquinas modernas y coaches que de verdad saben lo que hacen.", "autor": "Miembro VOLTA", "estrellas": 5 }
+  ],
+  "ambiente": {
+    "eyebrow": "El gym por dentro",
+    "h2": "Así se ve VOLTA",
+    "galeria": [
+      { "src": "/img/g-1.webp", "alt": "Sala de cycling con luces en VOLTA", "span": "md:col-span-2 md:row-span-2" },
+      { "src": "/img/g-2.webp", "alt": "Miembros entrenando fuerza en VOLTA", "span": "" },
+      { "src": "/img/g-3.webp", "alt": "Zona de peso libre en VOLTA", "span": "" },
+      { "src": "/img/g-4.webp", "alt": "Comunidad de VOLTA tras una clase", "span": "" },
+      { "src": "/img/g-5.webp", "alt": "Zona de recuperación en VOLTA", "span": "" }
+    ]
+  },
+  "ubicacionHead": {
+    "eyebrow": "Dónde estamos",
+    "h2": "Te esperamos en <span class=\"v-under\">El Poblado</span>"
+  },
+  "cta": {
+    "h2": "Carga pilas en VOLTA",
+    "parrafo": "Cuéntanos tu meta y te decimos cómo arrancar — planes, horarios y tu clase de prueba gratis. Te respondemos por WhatsApp al toque.",
+    "boton": "Agenda tu clase gratis"
+  },
+  "nav": [
+    { "href": "/#inicio", "label": "Inicio" },
+    { "href": "/#disciplinas", "label": "Disciplinas" },
+    { "href": "/#el-gym", "label": "El gym" },
+    { "href": "/#planes", "label": "Planes" },
+    { "href": "/#horario", "label": "Horario" },
+    { "href": "/#resenas", "label": "Reseñas" },
+    { "href": "/#ubicacion", "label": "Ubicación" }
+  ],
+  "faqHead": {
+    "eyebrow": "Preguntas frecuentes",
+    "h2": "Lo que todos preguntan"
+  },
+  "faq": [
+    { "q": "¿Tengo que pagar matrícula o firmar permanencia?", "a": "No. En VOLTA entrenas sin matrícula de inscripción y sin cláusula de permanencia: entrenas mientras te sirva." },
+    { "q": "¿Dónde queda VOLTA?", "a": "Estamos en la Cra 43A #18-95, El Poblado, Medellín. Escríbenos por WhatsApp y te ubicamos fácil." },
+    { "q": "¿Qué incluye la mensualidad?", "a": "Acceso ilimitado al gym, rutina personalizada ajustada por nuestros coaches, y sin matrícula ni permanencia." },
+    { "q": "¿Tienen coaches certificados?", "a": "Sí. Nuestro equipo de coaches está certificado y corrige tu técnica en cada sesión para que cada entrenamiento rinda." },
+    { "q": "¿Tienen clases grupales?", "a": "Sí: funcional, HIIT y cycling, además de acompañamiento nutricional para miembros." },
+    { "q": "¿Cómo empiezo?", "a": "Escríbenos por WhatsApp y agenda tu clase de prueba gratis. Vienes, conoces VOLTA y arrancamos." }
+  ],
+  "maker": { "name": "PixelWeb", "url": "https://mi-portafolio-eta-hazel.vercel.app/" }
+}

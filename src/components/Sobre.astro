@@ -1,0 +1,43 @@
+---
+// "El gym" — imagen de comunidad/interior + texto con badge de comunidad
+import site from '../data/site.json';
+const { comunidad } = site.marca;
+const s = site.sobre;
+const features = s.features;
+---
+<section id="el-gym" class="bg-negro py-20 md:py-28">
+  <div class="mx-auto grid max-w-[1240px] items-center gap-10 px-6 md:grid-cols-2 md:gap-14">
+    <div class="reveal relative">
+      <img
+        src={s.img}
+        alt={s.alt}
+        loading="lazy"
+        class="aspect-[4/5] w-full rounded-2xl object-cover shadow-2xl"
+      />
+      <div class="absolute -bottom-5 -right-4 rounded-xl bg-ambar px-5 py-4 text-center text-negro shadow-xl md:-right-6">
+        <b class="block font-display text-3xl leading-none">{comunidad}</b>
+        <small class="font-slab text-[0.72rem] font-semibold uppercase tracking-widest">comunidad</small>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <p class="mb-4 flex items-center gap-3 text-[0.78rem] font-bold uppercase tracking-[.22em] text-tenue">
+        <span class="v-tick v-line"></span>{s.eyebrow}
+      </p>
+      <h2 class="font-display text-[clamp(2rem,4.5vw,3.4rem)] font-semibold uppercase leading-[1.02]" set:html={s.h2}></h2>
+      <p class="mt-6 text-[1.05rem] leading-relaxed text-crema/85">
+        {s.parrafo}
+      </p>
+      <ul class="mt-8 grid gap-3 text-sm sm:grid-cols-2">
+        {features.map(([, t]) => (
+          <li class="flex items-center gap-3 rounded-xl border border-white/10 bg-negro2 px-4 py-4 transition hover:border-ambar/40">
+            <span class="grid h-7 w-7 shrink-0 place-items-center rounded-md bg-ambar/15 text-ambar" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <span class="font-semibold text-crema/90">{t}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
