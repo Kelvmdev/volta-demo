@@ -17,4 +17,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://volta-demo.vercel.app/sitemap.xml
+Sitemap: https://volta-demo-delta.vercel.app/sitemap.xml

@@ -19,11 +19,11 @@ VOLTA está en la Cra 43A #18-95, El Poblado, Medellín. Se entrena sin matrícu
 
 ## Secciones
 
-- [Disciplinas](https://volta-demo.vercel.app/#disciplinas): musculación, funcional/HIIT, peso libre, máquinas.
-- [El gym](https://volta-demo.vercel.app/#el-gym): espacio boutique con coaches certificados y comunidad.
-- [Planes](https://volta-demo.vercel.app/#planes): clase de prueba, mensualidad y personalizado.
-- [Horario](https://volta-demo.vercel.app/#horario): parrilla de clases de la semana.
-- [Ubicación](https://volta-demo.vercel.app/#ubicacion): dirección, mapa y horario.
+- [Disciplinas](https://volta-demo-delta.vercel.app/#disciplinas): musculación, funcional/HIIT, peso libre, máquinas.
+- [El gym](https://volta-demo-delta.vercel.app/#el-gym): espacio boutique con coaches certificados y comunidad.
+- [Planes](https://volta-demo-delta.vercel.app/#planes): clase de prueba, mensualidad y personalizado.
+- [Horario](https://volta-demo-delta.vercel.app/#horario): parrilla de clases de la semana.
+- [Ubicación](https://volta-demo-delta.vercel.app/#ubicacion): dirección, mapa y horario.
 
 ## Contacto
 
